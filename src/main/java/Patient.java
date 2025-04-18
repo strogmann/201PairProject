@@ -5,7 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public record Patient(PatientIdentity patientIdentity) {
+public class Patient implements IdentifiedObject {
+
+    private PatientIdentity patientIdentity = null;
+
+    public Patient(PatientIdentity identity) {
+        patientIdentity=identity;
+    }
 
     @Override
     public String toString() {
