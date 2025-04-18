@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Patient {
+public class Patient implements IdentifiedObject {
 
     private PatientIdentity patientIdentity = null;
 
