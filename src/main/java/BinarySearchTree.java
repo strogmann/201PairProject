@@ -2,16 +2,34 @@ package main.java;
 
 public class BinarySearchTree {
 
-    interface Identity {
-        public boolean match(Identity );
-        public boolean isLessThan( Identity );
+    public interface Identity {
+        public boolean match(Identity other);
+        public boolean isLessThan( Identity other);
+
     }
-    interface IdentifiedObject {
+    public interface IdentifiedObject {
         public Identity getIdentity();
     }
 
-    public void add (IdentifiedObject obj){
-        root = addNode(root, new TreeNode(pat));
+    private class TreeNode{
+        IdentifiedObject data;
+        TreeNode left, right;
+
+        TreeNode(IdentifiedObject data) {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    private TreeNode root;
+
+    public BinarySearchTree() {
+        this.root = null;
+    }
+
+    public void add(IdentifiedObject obj){
+        root = addNode(root, new TreeNode(obj));
     }
 
     public IdentifiedObject find(Identity id){
@@ -22,31 +40,26 @@ public class BinarySearchTree {
             return null;
     }
 
-    private class TreeNode{
-        IdentifiedObject data;
-        TreeNode left, right;
-    }
-
-    private TreeNode addNode(TreeNode root, TreeNode newNode) {
-        if (root == null)
+    private TreeNode addNode(TreeNode currentRoot, TreeNode newNode) {
+        if (currentRoot == null)
             return newNode;
         else
-            if ()
-                root.left = newNode;
+            if (newNode.data.getIdentity().isLessThan(currentRoot.data.getIdentity()))
+                currentRoot.left = addNode(currentRoot.right, newNode);
             else
-                root.right = newNode;
-            return root;
+                currentRoot.right = addNode(currentRoot.right, newNode);
+            return currentRoot;
     }
-    private TreeNode findNode(TreeNode root, Identity id){
-        if(root==null)
+    private TreeNode findNode(TreeNode currentRoot, Identity id){
+        if(currentRoot==null)
             return null;
         else
-            if (id.match(root))
-                return root;
+            if (id.match(currentRoot.data.getIdentity()))
+                return currentRoot;
             else
-                if (id.isLessThan(root))
-                    return root.left;
+                if (id.isLessThan(currentRoot.data.getIdentity()))
+                    return findNode(currentRoot.left, id);
                 else
-                    return root.right;
+                    return findNode(currentRoot.right, id);
     }
 }
