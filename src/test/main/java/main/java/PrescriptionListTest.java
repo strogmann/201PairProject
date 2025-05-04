@@ -1,5 +1,3 @@
-package test.main.java;
-
 import main.java.Prescription;
 import main.java.PrescriptionList;
 import org.junit.jupiter.api.Test;

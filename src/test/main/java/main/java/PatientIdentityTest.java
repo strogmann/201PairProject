@@ -1,6 +1,3 @@
-
-package test.main.java;
-
 import main.java.Name;
 import main.java.PatientIdentity;
 import org.junit.jupiter.api.Test;
