@@ -1,6 +1,3 @@
-
-package test.main.java;
-
 import main.java.Name;
 import main.java.Patient;
 import main.java.PatientIdentity;

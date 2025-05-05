@@ -1,5 +1,3 @@
-package test.main.java;
-
 import main.java.BinarySearchTree;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
